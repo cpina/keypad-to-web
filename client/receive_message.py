@@ -5,12 +5,12 @@ import sys
 from gpiozero import LED
 
 ip = sys.argv[1]
+led = LED(18)
 
 def on_code(*args):
+    global led
     message = args[0]
     print("on_code: ", message)
-
-    led = LED(18)
 
     if message == "6767":
         led.on()
