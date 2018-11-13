@@ -13,12 +13,8 @@ MarkupSafe==1.1.0
 multidict==4.4.2
 netifaces==0.10.6
 pkg-resources==0.0.0
-python-engineio==2.3.2
-python-socketio==2.0.0
 requests==2.20.1
 six==1.11.0
-socketio==0.1.4
-socketIO-client==0.7.2
 urllib3==1.24.1
 websocket-client==0.54.0
 Werkzeug==0.14.1
