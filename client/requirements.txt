@@ -1,5 +1,6 @@
 certifi==2018.10.15
 chardet==3.0.4
+gpiozero==1.4.1
 idna==2.7
 requests==2.20.1
 six==1.11.0

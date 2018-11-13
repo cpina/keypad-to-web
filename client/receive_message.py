@@ -1,11 +1,23 @@
 #!/usr/bin/env python3
 
 from socketIO_client import SocketIO
+import sys
+from gpiozero import LED
+
+ip = sys.argv[1]
 
 def on_code(*args):
-    print("on_message", args)
+    message = args[0]
+    print("on_code: ", message)
 
-sio = SocketIO("localhost", 8080)
+    led = LED(18)
+
+    if message == "6767":
+        led.on()
+    else:
+        led.off()
+
+sio = SocketIO(ip, 8080)
 
 sio.on("news", on_code)
 sio.wait()
