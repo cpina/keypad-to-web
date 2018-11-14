@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
+from gpiozero import LED,PWMLED
 from pad4pi import rpi_gpio
+from signal import pause
 import time
 import sys
 from socketIO_client import SocketIO
@@ -13,6 +15,8 @@ KEYPAD = [
 ]
 
 stored_keys = []
+# red = LED(1)
+red = PWMLED(1)
 
 ip = sys.argv[1]
 
@@ -34,6 +38,9 @@ def send_keys(keys):
 
 def storeKey(key):
     global stored_keys # yes, it's a hackday
+    global red
+    
+    red.on()
     print("Pressed key:", key)
     if key == "#":
         send_keys(stored_keys)
@@ -49,7 +56,8 @@ keypad.registerKeyPressHandler(storeKey)
 
 try:
     while True:
-        time.sleep(1)
+        time.sleep(0.5)
+        red.off()
 
 except KeyboardInterrupt:
     print("Goodbye!")
